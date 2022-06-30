@@ -6,7 +6,7 @@ export async function getAllTodos() {
         .from('todos')
         .select();
         
-    console.log(response);
+    // console.log(response);
     return response.data;
 }
 
@@ -16,7 +16,7 @@ export async function createTodo(todo) {
         .from('todos')
         .insert(todo)
         .single();
-    console.log(todo);
+    // console.log(todo);
     return response.data;
 }
 
@@ -34,6 +34,10 @@ export async function updateTodo(todo) {
 
 export async function deleteTodo(todo) {
     // delete todo
-
+    const response = await client
+        .from('todos')
+        .update(todo)
+        .eq('id', todo.id)
+        .single();
     return response.data;
 }

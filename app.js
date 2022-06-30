@@ -42,7 +42,7 @@ async function handleAdd(task) {
 async function handleComplete(todo) {
     // *** 
     // 1. Toggle todo complete property
-    todo.complete = false || true;
+    todo.complete = todo.complete = false || true;
     // 2. Get the index of the current todo
     const index = todos.indexOf(todo);
     // 3. Update that index of the array with the result of the update service function
@@ -70,8 +70,12 @@ async function handleEdit(todo, task) {
 async function handleDelete(todo) {
     // ***
     // 1. Get the index of the current todo
+    const index = todos.indexOf(todo);
     // 2. Call the delete service function
+    await deleteTodo(todo);
     // 3. remove the todo from the todos array using splice
+    todos.splice(index, 1);
+    console.log(todo);
 
     display();
 }
