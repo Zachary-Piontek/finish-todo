@@ -15,7 +15,9 @@ async function handlePageLoad() {
     protectPage(user);
 
     // *** set todos state from get all service function
-
+    todos = await getAllTodos();
+    
+    console.log(todos);
     display();
 }
 
@@ -26,7 +28,13 @@ async function handleSignOut() {
 async function handleAdd(task) {
     // *** 
     // 1. create a new todo with description set to task and complete false
+    const todoCreate = await createTodo({
+        description: task,
+        complete: false
+    });
     // 2. push the new todo into the todos array
+    todos.push(todoCreate);
+    console.log(todoCreate);
 
     display();
 }
@@ -34,8 +42,12 @@ async function handleAdd(task) {
 async function handleComplete(todo) {
     // *** 
     // 1. Toggle todo complete property
+    todo.complete = todo.complete = false || true;
     // 2. Get the index of the current todo
+    const index = todos.indexOf(todo);
     // 3. Update that index of the array with the result of the update service function
+    todos[index] = await updateTodo(todo);
+
 
     display();
 }
@@ -43,8 +55,14 @@ async function handleComplete(todo) {
 async function handleEdit(todo, task) {
     // ***
     // 1. Set the todo description to the new task text
+    todo.description = task;
     // 2. Get the index of the current todo
+    const index = todos.indexOf(todo);
     // 3. Update that index of the array with the result of the update service function
+    todos[index] = await updateTodo(todo);
+    console.log(todo, task);
+    
+    
 
     display();
 }
@@ -52,8 +70,12 @@ async function handleEdit(todo, task) {
 async function handleDelete(todo) {
     // ***
     // 1. Get the index of the current todo
+    const index = todos.indexOf(todo);
     // 2. Call the delete service function
+    await deleteTodo(todo);
     // 3. remove the todo from the todos array using splice
+    todos.splice(index, 1);
+    console.log(todo);
 
     display();
 }

@@ -18,6 +18,7 @@ export default function createTodos(root, {
             });
             root.append(li);
         }
+        console.log(TodoItem);
     };
 }
 
