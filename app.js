@@ -15,8 +15,10 @@ async function handlePageLoad() {
     protectPage(user);
 
     // *** set todos state from get all service function
-
+    todos = await getAllTodos();
+    
     display();
+    console.log(getAllTodos);
 }
 
 async function handleSignOut() {
