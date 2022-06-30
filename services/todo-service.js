@@ -6,7 +6,7 @@ export async function getAllTodos() {
         .from('todos')
         .select();
         
-    console.log(response.data);
+    console.log(response);
     return response.data;
 }
 
@@ -22,6 +22,8 @@ export async function createTodo(todo) {
 
 export async function updateTodo(todo) {
     // update todo
+
+    
 
     return response.data;
 }

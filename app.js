@@ -17,7 +17,7 @@ async function handlePageLoad() {
     // *** set todos state from get all service function
     todos = await getAllTodos();
     
-    console.log(getAllTodos);
+    console.log(todos);
     display();
 }
 
@@ -29,12 +29,12 @@ async function handleAdd(task) {
     // *** 
     // 1. create a new todo with description set to task and complete false
     const todoCreate = await createTodo({
-        desription: task,
+        description: task,
         complete: false
     });
     // 2. push the new todo into the todos array
     todos.push(todoCreate);
-    console.log(createTodo);
+    console.log(todoCreate);
 
     display();
 }
@@ -42,8 +42,11 @@ async function handleAdd(task) {
 async function handleComplete(todo) {
     // *** 
     // 1. Toggle todo complete property
+
     // 2. Get the index of the current todo
+
     // 3. Update that index of the array with the result of the update service function
+
 
     display();
 }
@@ -53,6 +56,7 @@ async function handleEdit(todo, task) {
     // 1. Set the todo description to the new task text
     // 2. Get the index of the current todo
     // 3. Update that index of the array with the result of the update service function
+    
 
     display();
 }
