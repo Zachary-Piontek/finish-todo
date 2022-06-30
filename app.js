@@ -17,8 +17,8 @@ async function handlePageLoad() {
     // *** set todos state from get all service function
     todos = await getAllTodos();
     
-    display();
     console.log(getAllTodos);
+    display();
 }
 
 async function handleSignOut() {
@@ -28,7 +28,13 @@ async function handleSignOut() {
 async function handleAdd(task) {
     // *** 
     // 1. create a new todo with description set to task and complete false
+    const todoCreate = await createTodo({
+        desription: task,
+        complete: false
+    });
     // 2. push the new todo into the todos array
+    todos.push(todoCreate);
+    console.log(createTodo);
 
     display();
 }
